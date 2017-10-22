@@ -29,11 +29,11 @@ $vars: (
         weight-7-dark: rgba(158, 32, 36, 1.0),
 
         //card background colors by weight
-        background-color-1: linear-gradient(to bottom right, rgba(255, 255, 255, 1), rgba(36, 67, 94, 0.3)),
-        background-color-2: linear-gradient(to bottom right, rgba(255, 255, 255, 1), rgba(159, 82, 9, 0.5)),
-        background-color-3: linear-gradient(to bottom right, rgba(255, 255, 255, 1), rgba(36, 67, 94, 0.6)),
-        background-color-5: linear-gradient(to bottom right, rgba(255, 255, 255, 1), rgba(159, 82, 9, 0.7)),
-        background-color-7: linear-gradient(to bottom right, rgba(255, 255, 255, 1), rgba(0, 0, 0, 0.8)),
+        background-color-1: radial-gradient(rgba(255, 255, 255, 1), rgba(36, 67, 94, 0.3)),
+        background-color-2: radial-gradient(rgba(255, 255, 255, 1), rgba(159, 82, 9, 0.5)),
+        background-color-3: radial-gradient(rgba(255, 255, 255, 1), rgba(36, 67, 94, 0.6)),
+        background-color-5: radial-gradient(rgba(255, 255, 255, 1), rgba(159, 82, 9, 0.7)),
+        background-color-7: radial-gradient(rgba(255, 255, 255, 1), rgba(0, 0, 0, 0.8)),
 
         face-value-color-weight-1: rgba(40, 155, 206, 1.0),
         face-value-color-weight-2: rgba(218, 148, 17, 1.0),
@@ -42,6 +42,36 @@ $vars: (
         face-value-color-weight-7: rgba(196, 25, 31, 1.0)
 );
 
+@keyframes Gradient {
+  0% {
+    background-position: 0% 0%
+  }
+  10% {
+    background-position: 99% 0%
+  }
+  20% {
+    background-position: 99% 99%
+  }
+  30% {
+    background-position: 0% 99%
+  }
+  40% {
+    background-position: 0% 0%
+  }
+  60% {
+    background-position: 0% 99%
+  }
+  70% {
+    background-position: 99% 99%
+  }
+  80% {
+    background-position: 99% 0%
+  }
+  100% {
+    background-position: 0% 0%
+  }
+}
+
 .card {
   @include var(width, card-width);
   @include var(height, card-height);
@@ -49,8 +79,13 @@ $vars: (
   position: relative;
   margin: auto;
 
-  background-clip: content-box;
-  @include var(background, background-color-1);
+  background-clip: border-box;
+
+  @include var(background-image, background-color-1);
+  background-size: 200% 200%;
+  background-position: 0 0;
+  transition: background-position 1s;
+  animation: Gradient 20s ease infinite;
 
   padding: 20px;
   border-radius: 10px;
@@ -117,6 +152,14 @@ $vars: (
     margin-top: 60px;
 
     z-index: 1;
+
+    transition: width 0.3s, left 0.3s;
+  }
+
+  &:hover .center-bull-icon {
+    z-index: 3;
+    width: 120%;
+    left: -10%;
   }
 
   .face-value {
@@ -127,7 +170,7 @@ $vars: (
     z-index: 2;
     //top: 0;
     left: 0;
-    bottom: 50px;
+    bottom: 25px;
     right: 0;
 
     margin: auto;
@@ -135,6 +178,12 @@ $vars: (
     font-family: Elephant;
     text-align: center;
     text-shadow: 4px 0 0 #fff, -4px 0 0 #fff, 0 4px 0 #fff, 0 -4px 0 #fff, 2px 2px #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff;
+
+    transition: font-size 0.3s;
+  }
+
+  &:hover .face-value {
+    font-size: calc(var(--face-value-font-size) * 1.2);
   }
 
   &::after {
@@ -154,7 +203,7 @@ $vars: (
   }
 
   &.weight-2 {
-    @include var(background, background-color-2);
+    @include var(background-image, background-color-2);
 
     .icon-bull {
       @include var(color, face-value-color-weight-2);
@@ -178,7 +227,7 @@ $vars: (
   }
 
   &.weight-3 {
-    @include var(background, background-color-3);
+    @include var(background-image, background-color-3);
 
     .icon-bull {
       @include var(color, face-value-color-weight-3);
@@ -202,7 +251,7 @@ $vars: (
   }
 
   &.weight-5 {
-    @include var(background, background-color-5);
+    @include var(background-image, background-color-5);
 
     .icon-bull {
       @include var(color, face-value-color-weight-5);
@@ -226,7 +275,7 @@ $vars: (
   }
 
   &.weight-7 {
-    @include var(background, background-color-7);
+    @include var(background-image, background-color-7);
 
     .face-value {
       @include var(color, face-value-color-weight-7);

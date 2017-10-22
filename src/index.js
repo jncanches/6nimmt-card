@@ -31,7 +31,7 @@ export default class extends Component {
         for (var i=0; i<weight; i++) {
             weightHeadersIcons.push(<i className='icon-bull' key={i}></i>);
             if (i===3 && weight===7) {
-                weightHeadersIcons.push(<br/>);
+                weightHeadersIcons.push(<br key={'br' + i}/>);
             }
         }
 
