@@ -34,7 +34,7 @@ class Demo extends Component {
             <div style={divStyle}>
                 <label>
                     Face value :
-                    <input type="range" min={0} max={104} value={this.state.faceValue} onChange={this._setFaceValueState}/>
+                    <input type="range" min={1} max={104} value={this.state.faceValue} onChange={this._setFaceValueState}/>
 
                     Card size (width) :
                     <input type="range" min={266} max={600} value={this.state.cardWidth} onChange={this._setCardWidthState}/>

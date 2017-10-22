@@ -1,11 +1,11 @@
 /*
 --card-width: 300px;
   --card-height: 456px;
-  --center-background-color-weight-1: white;
-  --center-background-color-weight-2: rgba(91, 134, 181, 0.8);
-  --center-background-color-weight-3: rgba(88, 130, 43, 0.8);
-  --center-background-color-weight-5: rgba(207, 13, 26, 0.8);
-  --center-background-color-weight-7: rgba(164, 151, 4, 0.8);
+  --background-color-1: white;
+  --background-color-2: rgba(91, 134, 181, 0.8);
+  --background-color-3: rgba(88, 130, 43, 0.8);
+  --background-color-5: rgba(207, 13, 26, 0.8);
+  --background-color-7: rgba(164, 151, 4, 0.8);
   --bull-color-weight-1: #49435E;
   --bull-color-weight-2: #243963;
   --bull-color-weight-3: #1B5123;
@@ -19,7 +19,7 @@
   --face-value-header-color-weight-1: --bull-color-weight-1;
   --face-value-header-color-weight-2: var(--bull-color-weight-2);
   --face-value-header-color-weight-3: var(--bull-color-weight-3);
-  --face-value-header-color-weight-5: var(--center-background-color-weight-5);
+  --face-value-header-color-weight-5: var(--background-color-5);
   --face-value-header-color-weight-7: var(--bull-color-weight-7);
 */
 
@@ -30,27 +30,48 @@
 
 $vars: (
         card-width: 300px,
-        card-height: 456px,
-        center-background-color-weight-1: white,
-        center-background-color-weight-2: rgba(91, 134, 181, 0.8),
-        center-background-color-weight-3: rgba(88, 130, 43, 0.8),
-        center-background-color-weight-5: rgba(207, 13, 26, 0.8),
-        center-background-color-weight-7: rgba(164, 151, 4, 0.8),
-        bull-color-weight-1: #49435E,
-        bull-color-weight-2: #243963,
-        bull-color-weight-3: #1B5123,
-        bull-color-weight-5: #49435E,
-        bull-color-weight-7: #293977,
-        face-value-color-weight-1: #9486AD,
-        face-value-color-weight-2: #498A9D,
-        face-value-color-weight-3: #9EA335,
-        face-value-color-weight-5: #698324,
-        face-value-color-weight-7: #8D2155,
-        face-value-header-color-weight-1: #49435E,
-        face-value-header-color-weight-2: #243963,
-        face-value-header-color-weight-3: #1B5123,
-        face-value-header-color-weight-5: rgba(207, 13, 26, 0.8),
-        face-value-header-color-weight-7: #8D2155,
+        card-height: 400px,
+        face-value-font-size: 12em,
+
+        weight-1-light: rgba(40, 155, 206, 1.0),
+        weight-1-medium: rgba(36, 67, 94, 1.0),
+        weight-1-dark: rgba(25, 52, 82, 1.0),
+
+        weight-2-light: rgba(227, 161, 14, 1.0),
+        weight-2-medium: rgba(159, 82, 9, 1.0),
+        weight-2-dark: rgba(105, 48, 0, 1.0),
+
+        weight-3-light: rgba(40, 155, 206, 1.0),
+        weight-3-medium: rgba(36, 67, 94, 1.0),
+        weight-3-dark: rgba(25, 52, 82, 1.0),
+
+        weight-5-light: rgba(227, 161, 14, 1.0),
+        weight-5-medium: rgba(159, 82, 9, 1.0),
+        weight-5-dark: rgba(105, 48, 0, 1.0),
+
+        weight-7-light: rgba(207, 98, 69, 1.0),
+        weight-7-medium: rgba(196, 25, 31, 1.0),
+        weight-7-dark: rgba(158, 32, 36, 1.0),
+
+        //card background colors by weight
+        background-color-1: linear-gradient(to bottom right, rgba(255, 255, 255, 1), rgba(36, 67, 94, 0.3)),
+        background-color-2: linear-gradient(to bottom right, rgba(255, 255, 255, 1), rgba(159, 82, 9, 0.5)),
+        background-color-3: linear-gradient(to bottom right, rgba(255, 255, 255, 1), rgba(36, 67, 94, 0.6)),
+        background-color-5: linear-gradient(to bottom right, rgba(255, 255, 255, 1), rgba(162, 84, 100, 1)),
+        background-color-7: linear-gradient(to bottom right, rgba(255, 255, 255, 1), rgba(0, 0, 0, 0.8)),
+
+        //card background colors by weight
+        bull-color-weight-1: rgba(40, 155, 206, 1.0),
+        bull-color-weight-2: rgba(218, 148, 17, 1.0),
+        bull-color-weight-3: rgba(25, 52, 82, 1.0),
+        bull-color-weight-5: rgba(159, 82, 9, 1.0),
+        bull-color-weight-7: rgba(207, 98, 69, 1.0),
+
+        face-value-color-weight-1: rgba(40, 155, 206, 1.0),
+        face-value-color-weight-2: rgba(218, 148, 17, 1.0),
+        face-value-color-weight-3: rgba(25, 52, 82, 1.0),
+        face-value-color-weight-5: rgba(159, 82, 9, 1.0),
+        face-value-color-weight-7: rgba(158, 32, 36, 1.0)
 );
 
 .card {
@@ -60,8 +81,8 @@ $vars: (
   position: relative;
   margin: auto;
 
-  background-color: white;
   background-clip: content-box;
+  @include var(background, background-color-1);
 
   padding: 20px;
   border-radius: 10px;
@@ -72,16 +93,17 @@ $vars: (
   .header, .footer {
     position: absolute;
     width: 100%;
-    //height: 80px;
     left: 0px;
     padding: 10px 0px;
     text-align: center;
 
     .face-value-left, .face-value-right {
-      @include var(color, face-value-header-color-weight-1);
+      @include var(color, face-value-color-weight-1);
 
       font-size: 35px;
-      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+      font-weight: bold;
+      text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+      //text-shadow: 2px 1px 2px rgba(0, 0, 0, 0.7);
       padding: 0 10px;
     }
 
@@ -91,6 +113,18 @@ $vars: (
 
     .face-value-right {
       float: right;
+    }
+
+    .score-zone {
+      position: absolute;
+      top: 15px;
+      width: 100%;
+
+      .icon-bull {
+        @include var(color, face-value-color-weight-1);
+        font-size: 1.9em;
+        padding: 0 5px;
+      }
     }
   }
 
@@ -103,38 +137,35 @@ $vars: (
     transform: rotate(180deg);
   }
 
-  .icon-bull {
-    @include var(color, bull-color-weight-1);
-
+  .center-bull-icon {
     position: absolute;
     top: 0;
     left: 0;
-    bottom: 0;
     right: 0;
-    height: 60%;
-    margin: auto;
+
+    width: 100%;
+
+    //    margin: auto;
+    margin-top: 60px;
 
     z-index: 1;
-    font-size: 225px;
-    text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.7);
   }
 
   .face-value {
+    @include var(font-size, face-value-font-size);
     @include var(color, face-value-color-weight-1);
 
     position: absolute;
     z-index: 2;
-    top: 0;
+    //top: 0;
     left: 0;
-    bottom: 0;
+    bottom: 50px;
     right: 0;
 
-    //width: 50%;
-    height: 50%;
     margin: auto;
 
-    font-size: 135px;
     font-family: Elephant;
+    text-align: center;
     text-shadow: 4px 0 0 #fff, -4px 0 0 #fff, 0 4px 0 #fff, 0 -4px 0 #fff, 2px 2px #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff;
   }
 
@@ -155,7 +186,7 @@ $vars: (
   }
 
   &.weight-2 {
-    @include var(background-color, center-background-color-weight-2);
+    @include var(background, background-color-2);
 
     .icon-bull {
       @include var(color, bull-color-weight-2);
@@ -167,13 +198,19 @@ $vars: (
 
     .header, .footer {
       .face-value-left, .face-value-right {
-        @include var(color, face-value-header-color-weight-2);
+        @include var(color, face-value-color-weight-2);
+      }
+
+      .score-zone {
+        .icon-bull {
+          @include var(color, face-value-color-weight-2);
+        }
       }
     }
   }
 
   &.weight-3 {
-    @include var(background-color, center-background-color-weight-3);
+    @include var(background, background-color-3);
 
     .icon-bull {
       @include var(color, bull-color-weight-3);
@@ -185,13 +222,19 @@ $vars: (
 
     .header, .footer {
       .face-value-left, .face-value-right {
-        @include var(color, face-value-header-color-weight-3);
+        @include var(color, face-value-color-weight-3);
+      }
+
+      .score-zone {
+        .icon-bull {
+          @include var(color, face-value-color-weight-3);
+        }
       }
     }
   }
 
   &.weight-5 {
-    @include var(background-color, center-background-color-weight-5);
+    @include var(background, background-color-5);
 
     .icon-bull {
       @include var(color, bull-color-weight-5);
@@ -203,17 +246,19 @@ $vars: (
 
     .header, .footer {
       .face-value-left, .face-value-right {
-        @include var(color, face-value-header-color-weight-5);
+        @include var(color, face-value-color-weight-5);
+      }
+
+      .score-zone {
+        .icon-bull {
+          @include var(color, face-value-color-weight-5);
+        }
       }
     }
   }
 
   &.weight-7 {
-    @include var(background-color, center-background-color-weight-7);
-
-    .icon-bull {
-      @include var(color, bull-color-weight-7);
-    }
+    @include var(background, background-color-7);
 
     .face-value {
       @include var(color, face-value-color-weight-7);
@@ -221,12 +266,19 @@ $vars: (
 
     .header, .footer {
       .face-value-left, .face-value-right {
-        @include var(color, face-value-header-color-weight-7);
+        @include var(color, face-value-color-weight-7);
+      }
+
+      .score-zone {
+        .icon-bull {
+          @include var(color, face-value-color-weight-7);
+          font-size: 1.5em;
+        }
       }
     }
   }
 
-  &.weight-7::after {
+  &::after {
     background-image: url(./assets/images/bull-background@64px.png);
   }
 }
