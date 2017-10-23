@@ -4,8 +4,6 @@
 }
 
 $vars: (
-        card-width: 300px,
-        card-height: 400px,
         face-value-font-size: 12em,
 
         weight-1-light: rgba(40, 155, 206, 1.0),
@@ -73,8 +71,13 @@ $vars: (
 }
 
 .card {
-  @include var(width, card-width);
-  @include var(height, card-height);
+  //@include var(height, card-height);
+  //@include var(width, card-width);
+
+  font-size:10px;
+
+  width: 100%;
+  padding-top: 142%;
 
   position: relative;
   margin: auto;
@@ -87,11 +90,10 @@ $vars: (
   transition: background-position 1s;
   animation: Gradient 20s ease infinite;
 
-  padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
-  padding: 50px 20px;
+  //padding: 50px 20px;
 
   .header, .footer {
     position: absolute;
@@ -103,7 +105,7 @@ $vars: (
     .face-value-left, .face-value-right {
       @include var(color, face-value-color-weight-1);
 
-      font-size: 35px;
+      font-size: 3.5em;
       font-weight: bold;
       text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
       //text-shadow: 2px 1px 2px rgba(0, 0, 0, 0.7);
@@ -125,7 +127,7 @@ $vars: (
 
       .icon-bull {
         @include var(color, face-value-color-weight-1);
-        font-size: 1.9em;
+        font-size: 3em;
         padding: 0 5px;
       }
     }
@@ -157,20 +159,20 @@ $vars: (
   }
 
   &:hover .center-bull-icon {
-    z-index: 3;
+    //z-index: 3;
     width: 120%;
     left: -10%;
   }
 
   .face-value {
-    @include var(font-size, face-value-font-size);
+    //@include var(font-size, face-value-font-size);
+    font-size: 16em;
     @include var(color, face-value-color-weight-1);
 
     position: absolute;
     z-index: 2;
-    //top: 0;
     left: 0;
-    bottom: 25px;
+    bottom: 30px;
     right: 0;
 
     margin: auto;
@@ -179,11 +181,12 @@ $vars: (
     text-align: center;
     text-shadow: 4px 0 0 #fff, -4px 0 0 #fff, 0 4px 0 #fff, 0 -4px 0 #fff, 2px 2px #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff;
 
-    transition: font-size 0.3s;
+    transition: font-size 0.3s, text-shadow 0.3s;
   }
 
   &:hover .face-value {
-    font-size: calc(var(--face-value-font-size) * 1.2);
+    font-size: 12em;
+    text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
   }
 
   &::after {
@@ -196,9 +199,12 @@ $vars: (
     left: 0;
     bottom: 0;
     right: 0;
-    margin: auto;
+    margin: 30px;
+
+    background-image: url(./assets/images/bull-background@64px.png);
     background-clip: content-box;
     background-repeat: round space;
+
     opacity: 0.2;
   }
 
@@ -293,10 +299,6 @@ $vars: (
         }
       }
     }
-  }
-
-  &::after {
-    background-image: url(./assets/images/bull-background@64px.png);
   }
 }
 

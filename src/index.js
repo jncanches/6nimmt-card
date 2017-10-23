@@ -22,9 +22,6 @@ export default class extends Component {
         });
 
         const divStyle = {
-            '--card-width': this.props.width + 'px',
-            '--card-height': (this.props.width * 1.33) + 'px',
-            '--face-value-font-size': (this.props.width * 0.035) + 'em',
         };
 
         const weightHeadersIcons = [];

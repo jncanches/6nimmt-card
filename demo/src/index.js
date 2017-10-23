@@ -8,41 +8,53 @@ class Demo extends Component {
         super(props);
         this.state = {
             faceValue: 1,
-            cardWidth: 266
+            containerWidth: 300
         };
 
         this._setFaceValueState = this._setFaceValueState.bind(this);
-        this._setCardWidthState = this._setCardWidthState.bind(this);
+        this._setContainerWidthState = this._setContainerWidthState.bind(this);
     }
 
     _setFaceValueState(event) {
         this.setState({faceValue: event.target.value});
     }
 
-    _setCardWidthState(event) {
-        this.setState({cardWidth: event.target.value});
+    _setContainerWidthState(event) {
+        this.setState({containerWidth: event.target.value});
     }
 
     render() {
 
-        const divStyle = {
-            margin: 'auto',
-            width: '800px'
+        const pageStyle = {
+            width: '100%',
+            padding: '20px'
         };
 
+        const selectorStyle = {
+            position: 'absolute',
+            width: '200px',
+            padding: '20px'
+        }
+
+        const cardContainerStyle = {
+            position: 'relative',
+            width: this.state.containerWidth + 'px',
+            margin: 'auto',
+            marginBottom: '33%'
+        }
+
         return (
-            <div style={divStyle}>
-                <label>
+            <div style={pageStyle}>
+                <div style={selectorStyle}>
                     Face value :
                     <input type="range" min={1} max={104} value={this.state.faceValue} onChange={this._setFaceValueState}/>
 
-                    Card size (width) :
-                    <input type="range" min={266} max={600} value={this.state.cardWidth} onChange={this._setCardWidthState}/>
-                </label>
-
-                <br/>
-                <br/>
-                <Card faceValue={this.state.faceValue} width={this.state.cardWidth}/>
+                    Container's width :
+                    <input type="range" min={200} max={600} value={this.state.containerWidth} onChange={this._setContainerWidthState}/>
+                </div>
+                <div style={cardContainerStyle}>
+                    <Card faceValue={this.state.faceValue}/>
+                </div>
             </div>
         );
     }
