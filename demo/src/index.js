@@ -16,11 +16,11 @@ class Demo extends Component {
     }
 
     _setFaceValueState(event) {
-        this.setState({faceValue: event.target.value});
+        this.setState({faceValue: event.target.valueAsNumber});
     }
 
     _setContainerWidthState(event) {
-        this.setState({containerWidth: event.target.value});
+        this.setState({containerWidth: event.target.valueAsNumber});
     }
 
     render() {

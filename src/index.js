@@ -8,7 +8,6 @@ import bullWeight5 from './assets/images/bull-weight-5.svg';
 import bullWeight7 from './assets/images/bull-weight-7.svg';
 import classnames from 'classnames';
 
-
 export default class extends Component {
     render() {
         let weight = this.getWeightFromFaceValue(this.props.faceValue);
@@ -27,7 +26,7 @@ export default class extends Component {
         const weightHeadersIcons = [];
         for (var i=0; i<weight; i++) {
             weightHeadersIcons.push(<i className='icon-bull' key={i}></i>);
-            if (i===3 && weight===7) {
+            if ((i===3 && weight===7) || (i===2 && weight===5) || (i===1 && weight===3)) {
                 weightHeadersIcons.push(<br key={'br' + i}/>);
             }
         }
@@ -41,22 +40,27 @@ export default class extends Component {
         };
         const bullIconUrl = './assets/images/bull-weight-' + weight + '.svg';
 
+        var faceValueAsString = this.props.faceValue;
+        if (this.props.faceValue === 66 || this.props.faceValue === 99) {
+            faceValueAsString += '.';
+        }
+
         return (
             <div className={cardClass} style={divStyle}>
                 <div className="header">
-                    <label className="face-value-left">{this.props.faceValue}</label>
+                    <label className="face-value-left">{faceValueAsString}</label>
                     <div className="score-zone">
                         {weightHeadersIcons}
                     </div>
-                    <label className="face-value-right">{this.props.faceValue}</label>
+                    <label className="face-value-right">{faceValueAsString}</label>
                 </div>
                 <img className="center-bull-icon" src={bullIconsByWeight[weight]}/>
                 {/*<i className="icon-bull"/>*/}
-                <label className="face-value">{this.props.faceValue}</label>
+                <label className="face-value">{faceValueAsString}</label>
                 <div className="footer">
-                    <label className="face-value-left">{this.props.faceValue}</label>
+                    <label className="face-value-left">{faceValueAsString}</label>
                     <div className="score-zone">{weightHeadersIcons}</div>
-                    <label className="face-value-right">{this.props.faceValue}</label>
+                    <label className="face-value-right">{faceValueAsString}</label>
                 </div>
             </div>
         );
