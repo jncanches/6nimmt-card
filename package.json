@@ -1,6 +1,6 @@
 {
   "name": "6nimmt-card",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "6nimmt-card React component",
   "main": "lib/index.js",
   "module": "es/index.js",
