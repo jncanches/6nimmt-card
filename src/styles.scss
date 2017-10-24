@@ -90,7 +90,6 @@ $vars: (
   @include var(background-image, background-color-1);
   background-size: 200% 200%;
   background-position: 0 0;
-  animation: Gradient 20s ease infinite;
 
   border-radius: 10px;
   box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -182,6 +181,7 @@ $vars: (
   }
 
   &:hover {
+    animation: Gradient 20s ease infinite;
     box-shadow: 11px 11px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
     .center-bull-icon {
