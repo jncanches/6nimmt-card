@@ -20,6 +20,7 @@
     "publish": "nwb build-react-component --copy-files && gh-pages -d demo/dist"
   },
   "dependencies": {
+    "6nimmt-utils": "^1.0.0",
     "classnames": "^2.2.5"
   },
   "peerDependencies": {
